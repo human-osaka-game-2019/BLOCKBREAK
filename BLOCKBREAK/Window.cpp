@@ -20,7 +20,7 @@ VOID WindowGeneration::OutputWindow(WNDCLASSEX WndClass, HINSTANCE hInst)
 	WndClass.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 
 }
-LRESULT CALLBACK WindowGeneration::WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMsg)
 	{

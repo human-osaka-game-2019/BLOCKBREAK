@@ -7,11 +7,11 @@ class WindowGeneration // ウィンドウ生成に必要な中身
 {
 public:
 	VOID OutputWindow(WNDCLASSEX WndClass, HINSTANCE hInst);
-	LRESULT WndProc(HWND, UINT, WPARAM, LPARAM);
+	
 private:
 
 };
 
-
+LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
 #endif
 

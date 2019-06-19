@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <d3d9.h>
 
-INT Main() 
+INT main() 
 {
 		MSG msg;
 		DWORD time = timeGetTime();
@@ -32,5 +32,5 @@ INT Main()
 	}
 
 
-
+	return 0;
 }
