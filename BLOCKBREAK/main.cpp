@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <d3d9.h>
 
-int main() 
+INT Main() 
 {
 		MSG msg;
 		DWORD time = timeGetTime();
 		DWORD prevtime = 0;
 		DWORD TIME = timeGetTime();
 	ZeroMemory(&msg, sizeof(msg));
-
 	while (msg.message != WM_QUIT)
 	{
 
