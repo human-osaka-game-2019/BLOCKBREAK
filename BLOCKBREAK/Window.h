@@ -3,15 +3,11 @@
 #include <Windows.h>
 #include <d3dx9.h>
 
-class WindowGeneration // ウィンドウ生成に必要な中身
+class WINDOWGENERATION // ウィンドウ生成に必要な中身
 {
 public:
-	VOID OutputWindow(WNDCLASSEX WndClass, HINSTANCE hInst);
-<<<<<<< HEAD
-=======
-	
+	VOID OutputWindow(WNDCLASSEX* WndClass, HINSTANCE hInst, CHAR* szAppName);
 private:
->>>>>>> 77f5110c64b34912bb2ca93e6b52cf4396ab9196
 
 };
 
