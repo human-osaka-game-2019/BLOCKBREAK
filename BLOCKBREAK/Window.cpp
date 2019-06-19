@@ -2,9 +2,11 @@
 #include <Windows.h>
 #include <d3dx9.h>
 
+LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
 VOID WindowGeneration::OutputWindow(WNDCLASSEX WndClass, HINSTANCE hInst)
 {
-	static char szAppName[] = "BROCKBREAK";
+	static char szAppName[] = "BLOCKBREAK";
 
 	WndClass.cbSize = sizeof(WndClass);
 	WndClass.style = CS_HREDRAW | CS_VREDRAW;
@@ -20,7 +22,8 @@ VOID WindowGeneration::OutputWindow(WNDCLASSEX WndClass, HINSTANCE hInst)
 	WndClass.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 
 }
-LRESULT CALLBACK WindowGeneration::WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
+
+LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMsg)
 	{
