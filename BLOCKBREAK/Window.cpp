@@ -16,12 +16,6 @@ VOID WINDOWGENERATION::OutputWindow(WNDCLASSEX* WndClass, HINSTANCE hInst, CHAR*
 	WndClass->lpszMenuName = NULL;
 	WndClass->lpszClassName = szAppName;
 	WndClass->hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-
-	RegisterClassEx(WndClass);
-	HWND hWnd = CreateWindow(szAppName, szAppName, WS_OVERLAPPEDWINDOW,
-		0, 0, 640, 480, NULL, NULL, hInst, NULL);
-	ShowWindow(hWnd, SW_SHOW);
-	UpdateWindow(hWnd);
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)

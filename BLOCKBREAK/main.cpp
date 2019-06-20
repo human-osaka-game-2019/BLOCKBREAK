@@ -11,6 +11,12 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	WindowGeneration.OutputWindow(&WndClass, hInst, szAppName);
 
+	RegisterClassEx(&WndClass);
+	HWND hWnd = CreateWindow(szAppName, szAppName, WS_OVERLAPPEDWINDOW,
+		0, 0, 640, 480, NULL, NULL, hInst, NULL);
+	ShowWindow(hWnd, SW_SHOW);
+	UpdateWindow(hWnd);
+
 	// ÉÅÉCÉìÉãÅ[Év
 	DWORD SyncPrev = timeGetTime();
 	DWORD SyncCurr = 0;
