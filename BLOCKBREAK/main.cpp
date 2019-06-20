@@ -1,6 +1,6 @@
 #include "Window.h"
-#include <stdio.h>
-#include <d3d9.h>
+#include <Windows.h>
+#include <d3dx9.h>
 
 INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdShow) 
 {
@@ -18,6 +18,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
+	// ÉÅÉCÉìÉãÅ[Év
 	DWORD SyncPrev = timeGetTime();
 	DWORD SyncCurr = 0;
 	ZeroMemory(&msg, sizeof(msg));
