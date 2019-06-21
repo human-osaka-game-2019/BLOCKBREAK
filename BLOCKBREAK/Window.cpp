@@ -2,20 +2,37 @@
 #include <Windows.h>
 #include <d3dx9.h>
 
-VOID WINDOWGENERATION::OutputWindow(WNDCLASSEX* WndClass, HINSTANCE hInst, CHAR* szAppName)
+HWND WINDOWGENERATION::OutputWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME)
 {
-	WndClass->cbSize = sizeof(WndClass);
-	WndClass->style = CS_HREDRAW | CS_VREDRAW;
-	WndClass->lpfnWndProc = WndProc;
-	WndClass->cbClsExtra = 0;
-	WndClass->cbWndExtra = 0;
-	WndClass->hInstance = hInst;
-	WndClass->hIcon = LoadIcon(NULL, IDI_APPLICATION);
-	WndClass->hCursor = LoadCursor(NULL, IDC_ARROW);
-	WndClass->hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-	WndClass->lpszMenuName = NULL;
-	WndClass->lpszClassName = szAppName;
-	WndClass->hIconSm = LoadIcon(NULL, IDI_APPLICATION);
+	WNDCLASS Wndclass;
+	Wndclass.style = CS_HREDRAW | CS_VREDRAW; //ウィンドウスタイル
+	Wndclass.lpfnWndProc = WndProc; //ウィンドウプロシージャ
+	Wndclass.cbClsExtra = 0; //メモリ確保
+	Wndclass.cbWndExtra = 0; //メモリ確保
+	Wndclass.hInstance = *hInstance;	//ハンドルインスタンス
+	Wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION); //アイコン
+	Wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);	//カーソル
+	Wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH); //背景のブラシ,色
+	Wndclass.lpszMenuName = NULL; //メニュー画面の名前
+	Wndclass.lpszClassName = API_NAME; //アプリケーションの名前
+
+	//ウィンドウクラスの登録
+	RegisterClass(&Wndclass);
+
+	//ウィンドウハンドルにcreatewindow関数で作った情報を代入
+	return *hWnd = CreateWindow(
+		API_NAME,							//クラスの名前
+		API_NAME,							//アプリケーションのタイトル
+		WS_OVERLAPPEDWINDOW | WS_VISIBLE,	//ウィンドウのスタイル
+		0,		            				//Xの位置
+		0,		            				//Yの位置
+		640,								//幅
+		480,								//高さ
+		NULL,								//親ウィンドウのハンドル
+		NULL,								//メニューのハンドル
+		*hInstance,							//インスタンスハンドル
+		NULL								//メッセージに渡されるパラメータ
+	);
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
