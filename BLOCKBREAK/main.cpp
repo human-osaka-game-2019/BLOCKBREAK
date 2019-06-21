@@ -5,17 +5,11 @@
 INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdShow) 
 {
 	MSG msg;
+	HWND hWnd = NULL;
 	WINDOWGENERATION WindowGeneration;
 	static char szAppName[] = "BLOCKBREAK";
-	WNDCLASSEX WndClass;
 
-	WindowGeneration.OutputWindow(&WndClass, hInst, szAppName);
-
-	RegisterClassEx(&WndClass);
-	HWND hWnd = CreateWindow(szAppName, szAppName, WS_OVERLAPPEDWINDOW,
-		0, 0, 640, 480, NULL, NULL, hInst, NULL);
-	ShowWindow(hWnd, SW_SHOW);
-	UpdateWindow(hWnd);
+	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName);
 
 	// ÉÅÉCÉìÉãÅ[Év
 	DWORD SyncPrev = timeGetTime();
