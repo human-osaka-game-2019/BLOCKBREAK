@@ -8,10 +8,8 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	HWND hWnd = NULL;
 	WINDOWGENERATION WindowGeneration;
 	static char szAppName[] = "BLOCKBREAK";
-	int wndwidth = 680;	//ウィンドウの幅
-	int wndhight = 360; //ウィンドウの高さ
-	//第一引数　ウィンドウハンドル、第二引数　インスタンス、第三引数　名前、第四引数　ウィンドウの幅、第五引数　ウィンドウの高さ。
-	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName,&wndwidth,&wndhight);
+
+	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName);
 
 	// メインループ
 	DWORD SyncPrev = timeGetTime();
@@ -30,9 +28,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 			SyncCurr = timeGetTime();
 			if (SyncCurr - SyncPrev >= 1000 / 60)
 			{
-
 				SyncPrev = SyncCurr;
-
 			}
 		}
 		Sleep(1);
