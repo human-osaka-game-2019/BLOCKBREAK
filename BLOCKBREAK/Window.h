@@ -6,7 +6,7 @@
 class WINDOWGENERATION // ウィンドウ生成に必要な中身
 {
 public:
-	HWND OutputWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME);
+	HWND OutputWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME, FLOAT* wnd_width, FLOAT* wnd_height);
 private:
 
 };

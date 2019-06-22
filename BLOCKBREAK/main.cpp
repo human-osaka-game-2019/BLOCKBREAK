@@ -8,8 +8,10 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	HWND hWnd = NULL;
 	WINDOWGENERATION WindowGeneration;
 	static char szAppName[] = "BLOCKBREAK";
+	FLOAT wnd_width = 640;
+	FLOAT wnd_height = 360;
 
-	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName);
+	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName, &wnd_width, &wnd_height);
 
 	// ÉÅÉCÉìÉãÅ[Év
 	DWORD SyncPrev = timeGetTime();
