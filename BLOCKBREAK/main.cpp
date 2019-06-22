@@ -1,4 +1,6 @@
 #include "Window.h"
+#include "DirectX.h"
+#include "Directgraphics.h"
 #include <Windows.h>
 #include <d3dx9.h>
 
@@ -10,10 +12,19 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	static char szAppName[] = "BLOCKBREAK";
 	FLOAT wnd_width = 640;
 	FLOAT wnd_height = 360;
-
 	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName, &wnd_width, &wnd_height);
 
+	CREATEDIRECTX createdirectx;
+	if (FAILED(createdirectx.InitD3d(hWnd)))
+	{
+		return 0;
+	}
+
 	// メインループ
+	CUSTOMVERTEX customvertex[4];
+	RECTANGLE rectangle = { 100.0f, 100.0f, 100.0f, 100.0f }; // 左上頂点と矩形サイズの設定
+	SetCoordinate(customvertex, rectangle);
+
 	DWORD SyncPrev = timeGetTime();
 	DWORD SyncCurr = 0;
 	ZeroMemory(&msg, sizeof(msg));
@@ -30,6 +41,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 			SyncCurr = timeGetTime();
 			if (SyncCurr - SyncPrev >= 1000 / 60)
 			{
+				DrawPolygon(customvertex, createdirectx);
 				SyncPrev = SyncCurr;
 			}
 		}

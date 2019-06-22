@@ -1,14 +1,14 @@
 #ifndef DIRECTX
 #define DIRECTX
 
-#include <d3d9.h>
+#include <d3dx9.h>
 
 class CREATEDIRECTX {
 public:
-	
 	LPDIRECT3D9 pDirectX;
 	LPDIRECT3DDEVICE9 pDevice;
-
+	// Direct3DÇÃèâä˙âªä÷êî
+	HRESULT InitD3d(HWND hWnd);
 };
 
 
