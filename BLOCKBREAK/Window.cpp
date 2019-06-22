@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <d3dx9.h>
 
-HWND WINDOWGENERATION::OutputWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME)
+HWND WINDOWGENERATION::OutputWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME,int* wndwidht,int* wndhight)
 {
 	WNDCLASS Wndclass;
 	Wndclass.style = CS_HREDRAW | CS_VREDRAW; //ウィンドウスタイル
@@ -26,8 +26,8 @@ HWND WINDOWGENERATION::OutputWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHA
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,	//ウィンドウのスタイル
 		0,		            				//Xの位置
 		0,		            				//Yの位置
-		640,								//幅
-		480,								//高さ
+		*wndwidht,								//幅
+		*wndhight,								//高さ
 		NULL,								//親ウィンドウのハンドル
 		NULL,								//メニューのハンドル
 		*hInstance,							//インスタンスハンドル
