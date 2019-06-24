@@ -1,7 +1,5 @@
 #include "DirectX.h"
 #include <d3dx9.h>
-#include <d3d9.h>
-
 
 HRESULT CREATEDIRECTX::InitD3d(HWND hWnd)
 {
@@ -16,10 +14,10 @@ HRESULT CREATEDIRECTX::InitD3d(HWND hWnd)
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
 
-	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN; //フォーマットなし
+	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;				// フォーマットなし
 	d3dpp.BackBufferCount = 1;
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-	d3dpp.Windowed = TRUE; //アプリケーションの表示形式
+	d3dpp.Windowed = TRUE;												// アプリケーションの表示形式
 
 	if (FAILED(pDirectX->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, // HAL:ハードウェア
 		D3DCREATE_MIXED_VERTEXPROCESSING,
@@ -35,6 +33,3 @@ HRESULT CREATEDIRECTX::InitD3d(HWND hWnd)
 		}
 	}
 }
-
-
-

@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <d3dx9.h>
 
-INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdShow) 
+INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdShow)
 {
 	MSG msg;
 	HWND hWnd = NULL;
@@ -14,17 +14,18 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	FLOAT wnd_height = 360;
 	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName, &wnd_width, &wnd_height);
 
+	// Direct3Dの初期化
 	CREATEDIRECTX createdirectx;
 	if (FAILED(createdirectx.InitD3d(hWnd)))
 	{
 		return 0;
 	}
 
-	// メインループ
-	CUSTOMVERTEX customvertex[4];
-	RECTANGLE rectangle = { 100.0f, 100.0f, 100.0f, 100.0f }; // 左上頂点と矩形サイズの設定
-	SetCoordinate(customvertex, rectangle);
+	CUSTOMVERTEX customvertex[4];												// ポリゴンの各頂点の宣言
+	RECTANGLE rectangle = { 100.0f, 100.0f, 100.0f, 100.0f };				// 矩形サイズ(width, height)と左上頂点(x, y)の設定
+	SetCoordinate(customvertex, rectangle);										// RECTANGLEの情報から各頂点を初期化
 
+	// メインループ
 	DWORD SyncPrev = timeGetTime();
 	DWORD SyncCurr = 0;
 	ZeroMemory(&msg, sizeof(msg));

@@ -7,7 +7,7 @@ class CREATEDIRECTX {
 public:
 	LPDIRECT3D9 pDirectX;
 	LPDIRECT3DDEVICE9 pDevice;
-	// Direct3D‚Ì‰Šú‰»ŠÖ”
+	// Direct3D‚Ì‰Šú‰»
 	HRESULT InitD3d(HWND hWnd);
 };
 
