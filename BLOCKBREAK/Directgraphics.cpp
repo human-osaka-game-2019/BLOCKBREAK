@@ -51,14 +51,17 @@ VOID SetCoordinate(CUSTOMVERTEX* customvertex, RECTANGLE rectangle)
 }
 
 // ポリゴンを描画する
-VOID DrawPolygon(CUSTOMVERTEX* customvertex, CREATEDIRECTX createdirectx)
+VOID DrawPolygon(VERTEXINITIALIZATION* vertexinitialization, CREATEDIRECTX createdirectx)
 {
 	createdirectx.pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(100, 100, 100), 1.0f, 0);
 	if (SUCCEEDED(createdirectx.pDevice->BeginScene())) //成功したかどうか
 	{
 		createdirectx.pDevice->SetFVF(FVF_CUSTOM);
-		// pDevice->DrawPrimitiveUP(ポリゴンの描画方法,ポリゴンの数,頂点データのポインタ,頂点データのサイズ)
-		createdirectx.pDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, customvertex, sizeof(CUSTOMVERTEX));
+		for (int i = 0; i < number_of_polygons; i++)
+		{
+			// pDevice->DrawPrimitiveUP(ポリゴンの描画方法,ポリゴンの数,頂点データのポインタ,頂点データのサイズ)
+			createdirectx.pDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, &vertexinitialization[i], sizeof(CUSTOMVERTEX));
+		}
 		createdirectx.pDevice->EndScene();
 	}
 	createdirectx.pDevice->Present(NULL, NULL, NULL, NULL); //画面の更新

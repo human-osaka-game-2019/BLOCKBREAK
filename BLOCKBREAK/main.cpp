@@ -21,9 +21,15 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 		return 0;
 	}
 
-	CUSTOMVERTEX customvertex[4];												// ポリゴンの各頂点の宣言
-	RECTANGLE rectangle = { 100.0f, 100.0f, 100.0f, 100.0f };				// 矩形サイズ(width, height)と左上頂点(x, y)の設定
-	SetCoordinate(customvertex, rectangle);										// RECTANGLEの情報から各頂点を初期化
+	VERTEXINITIALIZATION VertexInitialization[number_of_polygons];
+
+	// 背景テクスチャ
+	VertexInitialization[0].rectangle = { 100.0f, 100.0f, 100.0f, 100.0f };										// 矩形サイズ(width, height)と左上頂点(x, y)の設定
+	SetCoordinate(VertexInitialization[0].customvertex, VertexInitialization[0].rectangle);				// ポリゴンの各頂点を初期化
+
+	// 自機テクスチャ
+	VertexInitialization[1].rectangle = { 100.0f, 10.0f, 100.0f, 300.0f };											// 矩形サイズ(width, height)と左上頂点(x, y)の設定
+	SetCoordinate(VertexInitialization[1].customvertex, VertexInitialization[1].rectangle);				// ポリゴンの各頂点を初期化
 
 	// メインループ
 	DWORD SyncPrev = timeGetTime();
@@ -42,7 +48,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 			SyncCurr = timeGetTime();
 			if (SyncCurr - SyncPrev >= 1000 / 60)
 			{
-				DrawPolygon(customvertex, createdirectx);
+				DrawPolygon(VertexInitialization, createdirectx);
 				SyncPrev = SyncCurr;
 			}
 		}
