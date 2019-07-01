@@ -32,4 +32,14 @@ HRESULT CREATEDIRECTX::InitD3d(HWND hWnd)
 			return E_FAIL;
 		}
 	}
+
+	// テクスチャオブジェクトの作成
+	for (int i = 0; i < number_of_texture; i++)
+	{
+		if (FAILED(D3DXCreateTextureFromFile(pDevice, filename[i], &pTexture[i])))
+		{
+			MessageBox(0, "テクスチャの作成に失敗しました", "", MB_OK);
+			return E_FAIL;
+		}
+	}
 }

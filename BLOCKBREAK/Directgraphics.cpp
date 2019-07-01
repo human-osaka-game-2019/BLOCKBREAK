@@ -1,5 +1,4 @@
 #include "Directgraphics.h"
-#include "DirectX.h"
 #include <d3dx9.h>
 
 // 各頂点を初期化する
@@ -23,7 +22,7 @@ VOID SetCoordinate(CUSTOMVERTEX* customvertex, RECTANGLE rectangle)
 		0.0f,													// z座標
 		1.0f,													// rhw
 		0xffffffff,												// 色
-		0.0f,													// tu(テクスチャ座標_x)
+		1.0f,													// tu(テクスチャ座標_x)
 		0.0f,													// tv(テクスチャ座標_y)
 	};
 
@@ -34,8 +33,8 @@ VOID SetCoordinate(CUSTOMVERTEX* customvertex, RECTANGLE rectangle)
 		0.0f,													// z座標
 		1.0f,													// rhw
 		0xffffffff,												// 色
-		0.0f,													// tu(テクスチャ座標_x)
-		0.0f,													// tv(テクスチャ座標_y)
+		1.0f,													// tu(テクスチャ座標_x)
+		1.0f,													// tv(テクスチャ座標_y)
 	};
 
 	// 左下頂点情報
@@ -46,7 +45,7 @@ VOID SetCoordinate(CUSTOMVERTEX* customvertex, RECTANGLE rectangle)
 		1.0f,													// rhw
 		0xffffffff,												// 色
 		0.0f,													// tu(テクスチャ座標_x)
-		0.0f,													// tv(テクスチャ座標_y)
+		1.0f,													// tv(テクスチャ座標_y)
 	};
 }
 
@@ -59,6 +58,7 @@ VOID DrawPolygon(VERTEXINITIALIZATION* vertexinitialization, CREATEDIRECTX creat
 		createdirectx.pDevice->SetFVF(FVF_CUSTOM);
 		for (int i = 0; i < number_of_polygons; i++)
 		{
+			createdirectx.pDevice->SetTexture(0, createdirectx.pTexture[i]);
 			// pDevice->DrawPrimitiveUP(ポリゴンの描画方法,ポリゴンの数,頂点データのポインタ,頂点データのサイズ)
 			createdirectx.pDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, &vertexinitialization[i], sizeof(CUSTOMVERTEX));
 		}

@@ -1,11 +1,10 @@
 #ifndef DIRECTGRAPHICS
 #define DIRECTGRAPHICS
-
 #include "DirectX.h"
 #include <d3dx9.h>
 
-const DWORD FVF_CUSTOM = (D3DFVF_XYZRHW | D3DFVF_DIFFUSE);				// 頂点情報フラグ
-const INT number_of_polygons = 2;																	// 描画するポリゴンの枚数
+CONST DWORD FVF_CUSTOM = (D3DFVF_XYZRHW | D3DFVF_DIFFUSE);				// 頂点情報フラグ
+CONST INT number_of_polygons = 2;																	// 描画するポリゴンの枚数
 
 typedef struct
 {
