@@ -1,5 +1,4 @@
 #include "Window.h"
-#include "DirectX.h"
 #include "Directgraphics.h"
 #include <Windows.h>
 #include <d3dx9.h>
@@ -14,8 +13,12 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	FLOAT wnd_height = 360;
 	WindowGeneration.OutputWindow(&hWnd, &hInst, szAppName, &wnd_width, &wnd_height);
 
-	// Direct3Dの初期化
 	CREATEDIRECTX createdirectx;
+
+	createdirectx.filename[0] = { "outerwall035.jpg" };
+	createdirectx.filename[1] = { "1704.png" };
+
+	// Direct3Dの初期化
 	if (FAILED(createdirectx.InitD3d(hWnd)))
 	{
 		return 0;
@@ -24,7 +27,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	VERTEXINITIALIZATION VertexInitialization[number_of_polygons];
 
 	// 背景テクスチャ
-	VertexInitialization[0].rectangle = { 100.0f, 100.0f, 100.0f, 100.0f };										// 矩形サイズ(width, height)と左上頂点(x, y)の設定
+	VertexInitialization[0].rectangle = { 640.0f, 360.0f, 0.0f, 0.0f };										// 矩形サイズ(width, height)と左上頂点(x, y)の設定
 	SetCoordinate(VertexInitialization[0].customvertex, VertexInitialization[0].rectangle);				// ポリゴンの各頂点を初期化
 
 	// 自機テクスチャ
